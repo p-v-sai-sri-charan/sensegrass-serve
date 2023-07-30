@@ -10,7 +10,7 @@ import bodyParser from 'body-parser';
 const app = express();
 dotenv.config();
 
-app.use(cors({ origin: 'https://master.d5wbnpaa0ldw8.amplifyapp.com' }));
+app.use(cors({ origin: 'https://master.d15nmek1sd12f8.amplifyapp.com' }));
 
 // middleware
 app.use(bodyParser.json());
