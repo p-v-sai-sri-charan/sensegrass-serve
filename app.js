@@ -10,24 +10,7 @@ import bodyParser from 'body-parser';
 const app = express();
 dotenv.config();
 
-const allowedOrigins = [
-  'https://master.d5wbnpaa0ldw8.amplifyapp.com',
-  'https://master.d5wbnpaa0ldw8.amplifyapp.com/',
-];
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      const isAllowed = allowedOrigins.includes(origin);
-      callback(null, isAllowed);
-    },
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    exposedHeaders: ['Content-Length', 'Authorization'],
-    credentials: true,
-    optionsSuccessStatus: 200,
-  })
-);
+app.use(cors({ origin: 'https://master.d5wbnpaa0ldw8.amplifyapp.com' }));
 
 // middleware
 app.use(bodyParser.json());
