@@ -8,7 +8,7 @@ export async function requestOtp(req, res) {
   
       // Check if the phone number is valid (10 digits)
       if (phone.length !== 10) {
-        return res.send.json({ status: 400, body: { error: 'Invalid Phone Number' } });
+        return res.json({ status: 400, body: { error: 'Invalid Phone Number' } });
       }
   
       // Check if the phone number is already registered
@@ -27,7 +27,7 @@ export async function requestOtp(req, res) {
         await user.save();
         console.log('New user created',otp);
         // Send OTP to user phone number
-        return res.send.json({ message: 'OTP sent successfully', success: true });
+        return res.json({ message: 'OTP sent successfully', success: true });
       } else {
         // User already exists
   
@@ -39,13 +39,13 @@ export async function requestOtp(req, res) {
           user.otpTriesExpires = otpTriesExpires;
           await user.save();
   
-          return res.send.json({ status: 400, body: { error: 'You have exceeded the maximum number of attempts. Please try again after 24 hours' } });
+          return res.json({ status: 400, body: { error: 'You have exceeded the maximum number of attempts. Please try again after 24 hours' } });
         } else if (user.otpTriesExpires) {
           const currentTime = new Date();
   
           if (currentTime < user.otpTriesExpires) {
             // User is trying before the expiration time, show an error message
-            return res.send.json({ status: 400, body: { error: 'Please try again after 24 hours' } });
+            return res.json({ status: 400, body: { error: 'Please try again after 24 hours' } });
           } else {
             // User is trying after the expiration time, reset OTP count and update the user
             user.otpCount = 1;
