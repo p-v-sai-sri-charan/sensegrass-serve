@@ -40,6 +40,6 @@
   app.use('/api/v1/user',requireAuth,userRoutes);
 
 
-  app.listen(5000).on('listening', () => {
-    console.log('🚀 are live on port 5000');
+  app.listen(process.env.PORT).on('listening', () => {
+    console.log('🚀 are live');
   });
