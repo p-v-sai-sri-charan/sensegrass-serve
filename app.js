@@ -12,7 +12,7 @@ import fs from 'fs';
 import https from 'https';
 dotenv.config();
 
-app.use(cors());
+app.use(cors({ origin: 'https://master.d15nmek1sd12f8.amplifyapp.com', credentials: true }));
 
 // middleware
 app.use(bodyParser.json());
