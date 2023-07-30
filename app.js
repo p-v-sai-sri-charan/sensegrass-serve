@@ -8,6 +8,8 @@ import userRoutes from './routes/userRoutes.js';
 import bodyParser from 'body-parser';
 
 const app = express();
+import fs from 'fs';
+import https from 'https';
 dotenv.config();
 
 app.use(cors({ origin: 'https://master.d15nmek1sd12f8.amplifyapp.com' }));
@@ -20,7 +22,7 @@ const dbURI = process.env.mongo_url;
 console.log(dbURI);
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-  .then((result) => console.log('connected to db...', result))
+  .then((result) => console.log('connected to db...'))
   .catch((err) => console.log(err));
 
 app.get('/', (req, res) => {
@@ -46,6 +48,6 @@ const credentials = {
 const httpsServer = https.createServer(credentials, app);
 
 // Start the server
-httpsServer.listen(process.env.PORT || 5000, () => {
-  console.log('Express app running over HTTPS on port 443');
+httpsServer.listen(5000, () => {
+  console.log('Express app running over HTTPS on port 5000');
 });

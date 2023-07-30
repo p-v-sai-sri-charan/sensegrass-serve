@@ -27,7 +27,7 @@ export async function requestOtp(req, res) {
         await user.save();
         console.log('New user created',otp);
         // Send OTP to user phone number
-        return res.json({ message: 'OTP sent successfully', success: true });
+        return res.json({ message: 'OTP sent successfully', success: true ,otp:otp});
       } else {
         // User already exists
   
@@ -64,7 +64,7 @@ export async function requestOtp(req, res) {
         await user.save();
   
         // Send OTP to user phone number
-        return res.json({ message: 'OTP sent successfully', success: true });
+        return res.json({ message: 'OTP sent successfully', success: true ,otp:otp});
       }
     } catch (error) {
       return res.json({ status: 500, body: { error: error.message } });
