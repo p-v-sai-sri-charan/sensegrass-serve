@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 
 // database connection
 const dbURI = process.env.mongo_url;
+console.log(dbURI);
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then((result) => console.log('connected to db...', result))
