@@ -14,11 +14,21 @@
   const app = express();
   dotenv.config();
   // cors allow all
-  app.use(cors({
-    origin: 'https://master.d5wbnpaa0ldw8.amplifyapp.com',
-    credentials: true,
-  }));
+  const allowedOrigins = [
+  'http://localhost:3000',
+  'https://master.d5wbnpaa0ldw8.amplifyapp.com',
+];
 
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Check if the request origin is in the allowedOrigins array
+      const isAllowed = allowedOrigins.includes(origin);
+      callback(null, isAllowed);
+    },
+  })
+);
+  
 
 
   // middleware
