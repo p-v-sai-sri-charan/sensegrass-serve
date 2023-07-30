@@ -15,8 +15,8 @@
   dotenv.config();
   // cors allow all
 const allowedOrigins = [
-  'http://localhost:3000',
   'https://master.d5wbnpaa0ldw8.amplifyapp.com',
+  'https://master.d5wbnpaa0ldw8.amplifyapp.com/',
 ];
 
 app.use(
