@@ -31,6 +31,21 @@ app.get('/', (req, res) => {
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/user', requireAuth, userRoutes);
 
-app.listen(process.env.PORT).on('listening', () => {
-  console.log('🚀 are live');
+// Load SSL certificate and private key
+const privateKey = fs.readFileSync('./private.key', 'utf8');
+const certificate = fs.readFileSync('./certificate.crt', 'utf8');
+const ca = fs.readFileSync('./ca_bundle.crt', 'utf8'); // Only needed if you have CA bundle
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+  ca: ca, // Optional, depending on your certificate setup
+};
+
+// Create the HTTPS server
+const httpsServer = https.createServer(credentials, app);
+
+// Start the server
+httpsServer.listen(process.env.PORT || 5000, () => {
+  console.log('Express app running over HTTPS on port 443');
 });
