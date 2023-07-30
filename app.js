@@ -15,7 +15,7 @@
   dotenv.config();
   // cors allow all
   app.use(cors({
-    origin: 'https://master.d5wbnpaa0ldw8.amplifyapp.com/',
+    origin: 'https://master.d5wbnpaa0ldw8.amplifyapp.com',
     credentials: true,
   }));
 
