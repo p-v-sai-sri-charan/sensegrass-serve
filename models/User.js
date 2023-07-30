@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
     otpTriesExpires: { type: Date, required: false },
 
 });
-
+userSchema.index({ email: 1 }, { unique: true, sparse: true });
 const User = mongoose.models.user || mongoose.model("user", userSchema);
 
 export default User;
