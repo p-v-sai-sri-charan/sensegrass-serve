@@ -46,7 +46,7 @@ app.use(function(req, res, next) {
   // database connection
   const dbURI = process.env.mongo_url;
   mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
-    .then((result) => console.log('connected to db',result))
+    .then((result) => console.log('connected to db...',result))
     
     .catch((err) => console.log(err));
   
